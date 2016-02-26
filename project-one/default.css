@@ -7,6 +7,11 @@
 
 }
 
+.trending-links{
+  font-style: italic;
+  font-weight: bold;
+}
+
 .panel{
   border-radius: 0px;
 }
@@ -22,9 +27,19 @@
   top: 70px;
 }
 
+.img-thumbnail{
+  width: 100px;
+  margin: 20px;
+}
+
 .navbar-fixed{
   color: white;
 }
+
+li{
+  list-style-image: url("trending.png");
+}
+
 
 body{
   background-color: #e9eaed;
