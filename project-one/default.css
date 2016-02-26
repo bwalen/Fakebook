@@ -1,0 +1,32 @@
+.navbar-inverse{
+  background-color: #48649f;
+}
+
+.left-side-links{
+  margin: 10px;
+
+}
+
+.right-side-bar{
+  position: fixed;
+  right: 40px;
+  top: 70px;
+  width: 21%;
+}
+
+.bodycontent{
+  position:relative;
+  top: 70px;
+}
+
+.navbar-fixed{
+  color: white;
+}
+
+body{
+  background-color: #e9eaed;
+}
+
+a{
+  color: #48649f;
+}
