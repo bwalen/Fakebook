@@ -7,6 +7,9 @@
 
 }
 
+.panel{
+  border-radius: 0px;
+}
 .right-side-bar{
   position: fixed;
   right: 40px;
