@@ -1,0 +1,50 @@
+.navbar-inverse{
+  background-color: #48649f;
+}
+
+.left-side-links{
+  margin: 10px;
+
+}
+
+.trending-links{
+  font-style: italic;
+  font-weight: bold;
+}
+
+.panel{
+  border-radius: 0px;
+}
+.right-side-bar{
+  position: fixed;
+  right: 40px;
+  top: 70px;
+  width: 21%;
+}
+
+.bodycontent{
+  position:relative;
+  top: 70px;
+}
+
+.img-thumbnail{
+  width: 100px;
+  margin: 20px;
+}
+
+.navbar-fixed{
+  color: white;
+}
+
+li{
+  list-style-image: url("trending.png");
+}
+
+
+body{
+  background-color: #e9eaed;
+}
+
+a{
+  color: #48649f;
+}
