@@ -133,7 +133,7 @@ function addAPost(userobj, inputObj){
   var likeButton = document.createElement("img");
   if(inputObj.doILike == true){
     likeButton.setAttribute("class", "liked-button");
-    likeButton.setAttribute("src", "like4.jpg");
+    likeButton.setAttribute("src", "like3.png");
     likeButton.setAttribute("id", inputObj.postId);
   }
   else{
@@ -165,7 +165,7 @@ function likeButton(e){
   var likeText = document.createTextNode("you like this post");
   timelineArray[e.toElement.getAttribute("id")].doILike = true;
   console.log(e.toElement);
-  e.toElement.setAttribute("src", "like4.jpg");
+  e.toElement.setAttribute("src", "like3.png");
   e.toElement.setAttribute("class", "liked-button");
   console.log(e);
   console.log(e.toElement.previousSibling.firstChild);
