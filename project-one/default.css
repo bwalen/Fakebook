@@ -7,6 +7,14 @@
 
 }
 
+.trending-links{
+  font-style: italic;
+  font-weight: bold;
+}
+
+.panel{
+  border-radius: 0px;
+}
 .right-side-bar{
   position: fixed;
   right: 40px;
@@ -19,8 +27,28 @@
   top: 70px;
 }
 
+.img-thumbnail{
+  width: 110px;
+  margin: 10px;
+}
+
+
+.img-post{
+  width: 40px;
+  margin-right: 10px;
+}
+
+.like-button{
+  width: 75px;
+  float: right;
+}
+
 .navbar-fixed{
   color: white;
+}
+
+li{
+  list-style-image: url("trending.png");
 }
 
 body{
