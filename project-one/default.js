@@ -77,28 +77,26 @@ function changeAFriend(e){
   var userNumber = "";
   var target = e.target;
   if( target.hasAttribute("src") ){
-    console.log(target.getAttribute("src"));
     userNumber = target.getAttribute("src");
     for( var i = 0; i < 8; i++){
       if(userNumber == usersArray[i].profilePicture){
         if(usersArray[i].isMyfriend == true){
           usersArray[i].isMyfriend = false;
         }
-        if(usersArray[i].isMyfriend == false){
+        else{
           usersArray[i].isMyfriend = true;
         }
       }
     }
   }
   else if(target.firstChild.hasAttribute("src")){
-    console.log(target.firstChild.getAttribute("src"));
     userNumber = target.firstChild.getAttribute("src");
     for( var i = 0; i < 8; i++){
       if(userNumber == usersArray[i].profilePicture){
         if(usersArray[i].isMyfriend == true){
           usersArray[i].isMyfriend = false;
         }
-        if(usersArray[i].isMyfriend == false){
+        else{
           usersArray[i].isMyfriend = true;
         }
       }
@@ -109,15 +107,14 @@ function changeAFriend(e){
   addAllFriends(usersArray);
   removeAllPosts();
   addAllTimeline(usersArray, timelineArray);
+  likeButtonListeners();
 }
 
 function addAllTimeline(usersArray, timelineArray){
   for( var i = 0; i < timelineArray.length; i++)
   {
-    console.log(i);
     if( usersArray[timelineArray[i].userId].isMyfriend == true){
       addAPost(usersArray[timelineArray[i].userId], timelineArray[i] );
-      console.log("test");
     }
   }
 }
@@ -156,6 +153,19 @@ function removeAllPosts(){
   }
 }
 
+function likeButton(e){
+  var likeText = document.createTextNode("you like this post");
+  e.toElement.setAttribute("src", "like4.jpg");
+  e.toElement.setAttribute("class", "liked-button");
+}
+
+function likeButtonListeners(){
+  var likeAPost = document.getElementsByClassName("like-button");
+  for (i = 0; i < likeAPost.length; i++){
+    likeAPost[i].addEventListener("click", likeButton);
+  }
+}
+
 
 addAllFriends(usersArray);
 addAllTimeline(usersArray, timelineArray);
@@ -163,3 +173,4 @@ var addToNotFriends = document.getElementById("notYourFriends");
 addToNotFriends.addEventListener("click", changeAFriend);
 var addToFriends = document.getElementById("yourFriends");
 addToFriends.addEventListener("click", changeAFriend);
+likeButtonListeners();

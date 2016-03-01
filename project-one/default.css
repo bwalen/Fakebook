@@ -43,6 +43,11 @@
   float: right;
 }
 
+.liked-button{
+  width: 120px;
+  float: right;
+}
+
 .navbar-fixed{
   color: white;
 }
