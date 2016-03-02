@@ -33,6 +33,7 @@ var timelineArray = [
 function addAFriend(userObject){
   //adds a person by appending the dom, either as a friend or not using a user object as input
   var friendProfile = document.createElement("a");
+  //friendProfile.setAttribute("href", "#");
   var friendPicture = document.createElement("img");
   friendPicture.setAttribute("class", "img-thumbnail");
   friendPicture.setAttribute("src", userObject.profilePicture);
@@ -57,22 +58,20 @@ function addAllFriends(arrayOfUsers){
 }
 
 function removeAllFriends(){
+  //removes all friends and not-notfriends from the page
   var friendsContainer = document.getElementById("yourFriends");
   while (friendsContainer.firstChild){
     friendsContainer.removeChild(friendsContainer.firstChild);
   }
-}
-
-function removeAllNotFriends(){
-  var friendsContainer = document.getElementById("notYourFriends");
-  while (friendsContainer.firstChild){
-    friendsContainer.removeChild(friendsContainer.firstChild);
+  var notFriendsContainer = document.getElementById("notYourFriends");
+  while (notFriendsContainer.firstChild){
+    notFriendsContainer.removeChild(notFriendsContainer.firstChild);
   }
 }
 
 function changeAFriend(e){
   /*this function is called by the event listener for whenever someone clicks on a profile picture,
-  it will change the person to a friend and add their picture to the correct spot on the page.*/
+  it will change the person to a friend, or remove a friend and add their picture to the correct spot on the page.*/
   var userNumber = "";
   var target = e.target;
   if( target.hasAttribute("src") ){
@@ -92,7 +91,6 @@ function changeAFriend(e){
     }
   }
   removeAllFriends();
-  removeAllNotFriends();
   addAllFriends(usersArray);
   removeAllPosts();
   addAllTimeline(usersArray, timelineArray);
@@ -102,7 +100,7 @@ function changeAFriend(e){
 function addAllTimeline(usersArray, timelineArray){
   for( var i = 0; i < timelineArray.length; i++)
   {
-    if( usersArray[timelineArray[i].userId].isMyfriend == true){
+    if( usersArray[timelineArray[i].userId].isMyfriend == true){ //only adds posts for people who are friends
       addAPost(usersArray[timelineArray[i].userId], timelineArray[i] );
     }
   }
@@ -172,6 +170,7 @@ function likeButton(e){
 }
 
 function likeButtonListeners(){
+  //adds listeners to all like buttons, and liked buttons.
   var likeAPost = document.getElementsByClassName("like-button");
   for (i = 0; i < likeAPost.length; i++){
     likeAPost[i].addEventListener("click", likeButton);
