@@ -152,7 +152,6 @@ function removeAllPosts(){
 }
 
 function likeButton(e){
-  var likeText = document.createTextNode("you like this post");
   timelineArray[e.toElement.getAttribute("id")].doILike = true;
   e.toElement.setAttribute("src", "like3.png");
   e.toElement.setAttribute("class", "liked-button");
