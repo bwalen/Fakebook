@@ -22,7 +22,7 @@ var timelineArray = [
 ]
 
 function addAFriend(userObject){
-  //adds a single friend using an object as input
+  //adds a person by appending the dom, either as a friend or not using a user object as input
   var friendProfile = document.createElement("a");
   var friendPicture = document.createElement("img");
   friendPicture.setAttribute("class", "img-thumbnail");
@@ -30,31 +30,21 @@ function addAFriend(userObject){
   var nameText = document.createTextNode(userObject.firstName + " " + userObject.lastName);
   friendProfile.appendChild(friendPicture);
   friendProfile.appendChild(nameText);
-  var friendsLocation = document.getElementById("yourFriends");
-  friendsLocation.appendChild(friendProfile);
-}
-
-function addAPerson(userObject){
-  var friendProfile = document.createElement("a");
-  var friendPicture = document.createElement("img");
-  friendPicture.setAttribute("class", "img-thumbnail");
-  friendPicture.setAttribute("src", userObject.profilePicture);
-  var nameText = document.createTextNode(userObject.firstName + " " + userObject.lastName);
-  friendProfile.appendChild(friendPicture);
-  friendProfile.appendChild(nameText);
-  var friendsLocation = document.getElementById("notYourFriends");
+  var friendsLocation;
+  if (userObject.isMyfriend == true){
+    friendsLocation = document.getElementById("yourFriends");
+  }
+  else{
+    friendsLocation = document.getElementById("notYourFriends");
+  }
   friendsLocation.appendChild(friendProfile);
 }
 
 function addAllFriends(arrayOfUsers){
+  //loops through the user array passing each user to the addAFriend function
   for(var i = 0; i < arrayOfUsers.length; i++){
-    if(arrayOfUsers[i].isMyfriend == true){
       addAFriend(arrayOfUsers[i]);
     }
-    else{
-      addAPerson(arrayOfUsers[i]);
-    }
-  }
 }
 
 function removeAllFriends(){
@@ -164,11 +154,8 @@ function removeAllPosts(){
 function likeButton(e){
   var likeText = document.createTextNode("you like this post");
   timelineArray[e.toElement.getAttribute("id")].doILike = true;
-  console.log(e.toElement);
   e.toElement.setAttribute("src", "like3.png");
   e.toElement.setAttribute("class", "liked-button");
-  console.log(e);
-  console.log(e.toElement.previousSibling.firstChild);
 }
 
 function likeButtonListeners(){
@@ -177,7 +164,6 @@ function likeButtonListeners(){
     likeAPost[i].addEventListener("click", likeButton);
   }
 }
-
 
 addAllFriends(usersArray);
 addAllTimeline(usersArray, timelineArray);
