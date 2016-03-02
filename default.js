@@ -68,27 +68,17 @@ function changeAFriend(e){
   var target = e.target;
   if( target.hasAttribute("src") ){
     userNumber = target.getAttribute("src");
-    for( var i = 0; i < 8; i++){
-      if(userNumber == usersArray[i].profilePicture){
-        if(usersArray[i].isMyfriend == true){
-          usersArray[i].isMyfriend = false;
-        }
-        else{
-          usersArray[i].isMyfriend = true;
-        }
-      }
-    }
   }
   else if(target.firstChild.hasAttribute("src")){
     userNumber = target.firstChild.getAttribute("src");
-    for( var i = 0; i < 8; i++){
-      if(userNumber == usersArray[i].profilePicture){
-        if(usersArray[i].isMyfriend == true){
-          usersArray[i].isMyfriend = false;
-        }
-        else{
-          usersArray[i].isMyfriend = true;
-        }
+  }
+  for( var i = 0; i < usersArray.length; i++){
+    if(userNumber == usersArray[i].profilePicture){
+      if(usersArray[i].isMyfriend == true){
+        usersArray[i].isMyfriend = false;
+      }
+      else{
+        usersArray[i].isMyfriend = true;
       }
     }
   }
