@@ -30,7 +30,6 @@ var timelineArray = [
   {userId: 0, postId: 17, date: 20160225, doILike: true, timeLinePicture: null, bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem"}
 ]
 
-
 function addAFriend(userObject){
   //adds a person by appending the dom, either as a friend or not using a user object as input
   var friendProfile = document.createElement("a");
@@ -122,7 +121,7 @@ function addAPost(userobj, inputObj){
   var userNameText = document.createTextNode(userobj.firstName + " " + userobj.lastName);
   var likeButton = document.createElement("img");
   if(inputObj.doILike == true){
-    likeButton.setAttribute("class", "liked-button");
+    likeButton.setAttribute("class", "like-button liked-button");
     likeButton.setAttribute("src", "like3.png");
     likeButton.setAttribute("id", inputObj.postId);
   }
@@ -160,9 +159,16 @@ function removeAllPosts(){
 }
 
 function likeButton(e){
-  timelineArray[e.toElement.getAttribute("id")].doILike = true;
-  e.toElement.setAttribute("src", "like3.png");
-  e.toElement.setAttribute("class", "liked-button");
+  if( timelineArray[e.toElement.getAttribute("id")].doILike == false){
+    timelineArray[e.toElement.getAttribute("id")].doILike = true;
+    e.toElement.setAttribute("src", "like3.png");
+    e.toElement.setAttribute("class", "liked-button");
+  }
+  else{
+    timelineArray[e.toElement.getAttribute("id")].doILike = false;
+    e.toElement.setAttribute("src", "like10.png");
+    e.toElement.setAttribute("class", "like-button");
+  }
 }
 
 function likeButtonListeners(){
