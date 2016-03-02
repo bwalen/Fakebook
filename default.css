@@ -2,10 +2,6 @@
   background-color: #48649f;
 }
 
-.left-side-links{
-  margin: 10px;
-}
-
 .trending-links{
   font-style: italic;
   font-weight: bold;
@@ -32,10 +28,9 @@
   margin: 10px;
 }
 
-
 .img-post{
   width: 40px;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .like-button{
@@ -46,10 +41,6 @@
 .liked-button{
   width: 120px;
   float: right;
-}
-
-.navbar-fixed{
-  color: white;
 }
 
 li{
