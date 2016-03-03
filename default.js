@@ -177,10 +177,24 @@ function likeButtonListeners(){
   }
 }
 
+function updateStatusText(e){
+  var statusText = document.getElementById("status");
+  while(statusText.firstChild){
+    statusText.removeChild(statusText.firstChild);
+  }
+  var statusInput = document.getElementById("status-input");
+  var statusTextNode = document.createTextNode(statusInput.value);
+  statusText.appendChild(statusTextNode);
+  e.preventDefault();
+
+}
+
 addAllFriends(usersArray);
 addAllTimeline(usersArray, timelineArray);
 var addToNotFriends = document.getElementById("notYourFriends");
 addToNotFriends.addEventListener("click", changeAFriend);
 var addToFriends = document.getElementById("yourFriends");
 addToFriends.addEventListener("click", changeAFriend);
+var statusButton = document.getElementById("status-submit");
+statusButton.addEventListener("click", updateStatusText);
 likeButtonListeners();
