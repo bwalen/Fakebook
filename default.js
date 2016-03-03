@@ -52,8 +52,13 @@ function addAFriend(userObject){
 
 function addAllFriends(arrayOfUsers){
   //loops through the user array passing each user to the addAFriend function
-  for(var i = 0; i < arrayOfUsers.length; i++){
-      addAFriend(arrayOfUsers[i]);
+  var sortedArray = _.sortBy(arrayOfUsers, 'lastName');
+  console.log("test2");
+  console.log(sortedArray[1]);
+  for(var i = 0; i < sortedArray.length; i++){
+      addAFriend(sortedArray[i]);
+      console.log("test");
+
     }
 }
 
