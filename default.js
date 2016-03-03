@@ -52,13 +52,10 @@ function addAFriend(userObject){
 
 function addAllFriends(arrayOfUsers){
   //loops through the user array passing each user to the addAFriend function
+  //also sorts friends alphabetically by last name
   var sortedArray = _.sortBy(arrayOfUsers, 'lastName');
-  console.log("test2");
-  console.log(sortedArray[1]);
   for(var i = 0; i < sortedArray.length; i++){
       addAFriend(sortedArray[i]);
-      console.log("test");
-
     }
 }
 
@@ -191,7 +188,17 @@ function updateStatusText(e){
   var statusTextNode = document.createTextNode(statusInput.value);
   statusText.appendChild(statusTextNode);
   e.preventDefault();
+}
 
+function showLikedPost(){
+  var likedPostsArray = _.where(timelineArray, {doILike: true});
+  console.log(likedPostsArray);
+  removeAllPosts();
+  for( var i = 0; i < likedPostsArray.length; i++)
+  {
+    console.log("Test");
+    addAPost(usersArray[likedPostsArray[i].userId], likedPostsArray[i] );
+  }
 }
 
 addAllFriends(usersArray);
@@ -202,4 +209,6 @@ var addToFriends = document.getElementById("yourFriends");
 addToFriends.addEventListener("click", changeAFriend);
 var statusButton = document.getElementById("status-submit");
 statusButton.addEventListener("click", updateStatusText);
+var likedPosts = document.getElementById("liked-posts");
+likedPosts.addEventListener("click", showLikedPost);
 likeButtonListeners();
