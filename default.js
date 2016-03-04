@@ -30,6 +30,20 @@ var timelineArray = [
   {userId: 0, postId: 17, date: 20160225, doILike: true, timeLinePicture: null, bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem"}
 ]
 
+var sponsorsProfile = [
+  {firstName: "Amazon.com", lastName: "Sponsored Post", profilePicture: "profile-pictures/amazon.jpg", isMyfriend: true, userId: 0},
+  {firstName: "Twitter", lastName: "Sponsored Post", profilePicture: "profile-pictures/twitter.png", isMyfriend: true, userId: 1},
+  {firstName: "Yelp", lastName: "Sponsored Post", profilePicture: "profile-pictures/yelp.png", isMyfriend: true, userId: 2},
+  {firstName: "Youtube", lastName: "Sponsored Post", profilePicture: "profile-pictures/youtube.png", isMyfriend: true, userId: 3}
+]
+
+var sponsorsPosts = [
+  {userId: 0, postId: 0, date: 20160225, doILike: false, timeLinePicture: "timeline-pictures/amazon1.png", timeLineLink: "http://www.amazon.com", bodyText: "Amazon.com and you're done."},
+  {userId: 1, postId: 1, date: 20160225, doILike: false, timeLinePicture: "timeline-pictures/twitter.jpg", timeLineLink: "http://www.twitter.com", bodyText: "The best way to discover what's new in your world."},
+  {userId: 2, postId: 2, date: 20160225, doILike: false, timeLinePicture: "timeline-pictures/yelp.jpg", timeLineLink: "http://www.yelp.com", bodyText: "Real People.  Real Reviews."},
+  {userId: 3, postId: 3, date: 20160225, doILike: false, timeLinePicture: "timeline-pictures/youtube.png", timeLineLink: "http://www.youtube.com", bodyText: "Broadcast Yourself!"}
+]
+
 function addAFriend(userObject){
   //adds a person by appending the dom, either as a friend or not using a user object as input
   var friendProfile = document.createElement("a");
@@ -100,11 +114,20 @@ function changeAFriend(e){
 }
 
 function addAllTimeline(usersArray, timelineArray){
+  var postcounter = 0;
+  var randomnumber;
   for( var i = 0; i < timelineArray.length; i++)
   {
+    if( postcounter == 1 || postcounter == 7 || postcounter == 15 || postcounter==25){
+      randomnumber = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+      addAPost(sponsorsProfile[randomnumber], sponsorsPosts[randomnumber]);
+      postcounter++;
+    }
     if( usersArray[timelineArray[i].userId].isMyfriend == true){ //only adds posts for people who are friends
       addAPost(usersArray[timelineArray[i].userId], timelineArray[i] );
+      postcounter++;
     }
+
   }
 }
 
@@ -135,10 +158,18 @@ function addAPost(userobj, inputObj){
   var bodyText = document.createTextNode(inputObj.bodyText);
   var bodyImage = document.createElement("img");
   var bodyHR = document.createElement("hr");
+  var profilePictureLink = document.createElement("a");
   if(inputObj.timeLinePicture){
     bodyImage.setAttribute("class" , "img-responsive");
     bodyImage.setAttribute("src", inputObj.timeLinePicture);
-    bodyDiv.appendChild(bodyImage);
+    if(inputObj.timeLineLink){
+      profilePictureLink.setAttribute("href", inputObj.timeLineLink);
+      profilePictureLink.appendChild(bodyImage);
+      bodyDiv.appendChild(profilePictureLink);
+    }
+    else{
+      bodyDiv.appendChild(bodyImage);
+    }
     bodyDiv.appendChild(bodyHR);
   }
   bodyDiv.appendChild(bodyText);
@@ -209,9 +240,6 @@ function newsRequest(){
 function processNewsRequest(e){
   if(news.readyState == 4 && news.status == 200){
     response = JSON.parse(news.responseText);
-    //console.log("Test");
-    //console.log(response);
-    //console.log(response.response.docs[0].web_url);
     removeNews();
   }
   for(var i = 0 ; i < 3 ; i++){
@@ -230,7 +258,7 @@ function addNews(whichStory){
   var newsContainer = document.getElementById("news");
   var newslink = document.createElement("a");
   var newsListItem = document.createElement("li");
-  var stringBreakdown = response.response.docs[whichStory].snippet.slice(0, 80);
+  var stringBreakdown = response.response.docs[whichStory].snippet.slice(0, 70);
   newslink.setAttribute("href", response.response.docs[whichStory].web_url);
   var linkText = document.createTextNode(stringBreakdown);
   newslink.appendChild(linkText);
