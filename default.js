@@ -119,7 +119,7 @@ function addAllTimeline(usersArray, timelineArray){
   for( var i = 0; i < timelineArray.length; i++)
   {
     if( postcounter == 1 || postcounter == 7 || postcounter == 15 || postcounter==25){
-      randomnumber = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+      randomnumber = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
       addAPost(sponsorsProfile[randomnumber], sponsorsPosts[randomnumber]);
       postcounter++;
     }
