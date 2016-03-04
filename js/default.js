@@ -145,12 +145,12 @@ function addAPost(userobj, inputObj){
   var likeButton = document.createElement("img");
   if(inputObj.doILike == true){
     likeButton.setAttribute("class", "like-button liked-button");
-    likeButton.setAttribute("src", "like3.png");
+    likeButton.setAttribute("src", "images/like3.png");
     likeButton.setAttribute("id", inputObj.postId);
   }
   else{
     likeButton.setAttribute("class" , "like-button");
-    likeButton.setAttribute("src" , "like10.png");
+    likeButton.setAttribute("src" , "images/like10.png");
     likeButton.setAttribute("id", inputObj.postId);
   }
   var bodyDiv = document.createElement("div");
@@ -192,12 +192,12 @@ function removeAllPosts(){
 function likeButton(e){
   if( timelineArray[e.toElement.getAttribute("id")].doILike == false){
     timelineArray[e.toElement.getAttribute("id")].doILike = true;
-    e.toElement.setAttribute("src", "like3.png");
+    e.toElement.setAttribute("src", "images/like3.png");
     e.toElement.setAttribute("class", "liked-button");
   }
   else{
     timelineArray[e.toElement.getAttribute("id")].doILike = false;
-    e.toElement.setAttribute("src", "like10.png");
+    e.toElement.setAttribute("src", "images/like10.png");
     e.toElement.setAttribute("class", "like-button");
   }
 }
