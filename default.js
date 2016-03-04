@@ -213,9 +213,10 @@ function processNewsRequest(e){
     //console.log(response);
     //console.log(response.response.docs[0].web_url);
     removeNews();
-    addNews();
   }
-
+  for(var i = 0 ; i < 3 ; i++){
+    addNews(i);
+  }
 }
 
 function removeNews(){
@@ -225,15 +226,17 @@ function removeNews(){
   }
 }
 
-function addNews(){
+function addNews(whichStory){
   var newsContainer = document.getElementById("news");
   var newslink = document.createElement("a");
-  newslink.setAttribute("href", response.response.docs[0].web_url);
-  var linkText = document.createTextNode(response.response.docs[0].snippet);
+  var newsListItem = document.createElement("li");
+  var stringBreakdown = response.response.docs[whichStory].snippet.slice(0, 80);
+  newslink.setAttribute("href", response.response.docs[whichStory].web_url);
+  var linkText = document.createTextNode(stringBreakdown);
   newslink.appendChild(linkText);
-  newsContainer.appendChild(newslink);
+  newsListItem.appendChild(newslink);
+  newsContainer.appendChild(newsListItem);
 }
-
 
 var news;
 var response;
