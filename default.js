@@ -187,20 +187,57 @@ function updateStatusText(e){
   var statusInput = document.getElementById("status-input");
   var statusTextNode = document.createTextNode(statusInput.value);
   statusText.appendChild(statusTextNode);
-  e.preventDefault();
 }
 
 function showLikedPost(){
   var likedPostsArray = _.where(timelineArray, {doILike: true});
-  console.log(likedPostsArray);
   removeAllPosts();
   for( var i = 0; i < likedPostsArray.length; i++)
   {
-    console.log("Test");
     addAPost(usersArray[likedPostsArray[i].userId], likedPostsArray[i] );
+  }
+  likeButtonListeners();
+}
+
+function newsRequest(){
+  news = new XMLHttpRequest();
+  news.open("GET" , "http://api.nytimes.com/svc/search/v2/articlesearch.json?fl=web_url%2Csnippet%2Clead_paragraph&api-key=ba97582bc69cd83e731a2b0260adee46%3A5%3A74617978", true);
+  news.send();
+  news.addEventListener("readystatechange", processNewsRequest);
+}
+
+function processNewsRequest(e){
+  if(news.readyState == 4 && news.status == 200){
+    response = JSON.parse(news.responseText);
+    //console.log("Test");
+    //console.log(response);
+    //console.log(response.response.docs[0].web_url);
+    removeNews();
+    addNews();
+  }
+
+}
+
+function removeNews(){
+  var newsContainer = document.getElementById("news");
+  while (newsContainer.firstChild){
+  newsContainer.removeChild(newsContainer.firstChild);
   }
 }
 
+function addNews(){
+  var newsContainer = document.getElementById("news");
+  var newslink = document.createElement("a");
+  newslink.setAttribute("href", response.response.docs[0].web_url);
+  var linkText = document.createTextNode(response.response.docs[0].snippet);
+  newslink.appendChild(linkText);
+  newsContainer.appendChild(newslink);
+}
+
+
+var news;
+var response;
+newsRequest();
 addAllFriends(usersArray);
 addAllTimeline(usersArray, timelineArray);
 var addToNotFriends = document.getElementById("notYourFriends");
