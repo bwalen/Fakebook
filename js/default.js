@@ -266,6 +266,13 @@ function addNews(whichStory){
   newsContainer.appendChild(newsListItem);
 }
 
+function displayProfile(user){
+  removeAllPosts();
+  var container = getElementById("posts");
+  
+}
+
+
 var news;
 var response;
 newsRequest();
