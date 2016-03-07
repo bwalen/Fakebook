@@ -1,18 +1,18 @@
 var usersArray = [
-  {firstName: "John", lastName: "Doe", profilePicture: "images/profile/user1.jpg", isMyfriend: true, userId: 0},
-  {firstName: "Jenn", lastName: "Jones", profilePicture: "images/profile/user2.jpg", isMyfriend: false, userId: 1},
-  {firstName: "Fred", lastName: "Johnson", profilePicture: "images/profile/user3.jpg", isMyfriend: true, userId: 2},
-  {firstName: "Alex", lastName: "Anderson", profilePicture: "images/profile/user4.jpg", isMyfriend: false, userId: 3},
-  {firstName: "Harry", lastName: "Thompson", profilePicture: "images/profile/user5.jpg", isMyfriend: false, userId: 4},
-  {firstName: "Betty", lastName: "Aaron", profilePicture: "images/profile/user6.jpg", isMyfriend: false, userId: 5},
-  {firstName: "Alfred", lastName: "Nixon", profilePicture: "images/profile/user7.jpg", isMyfriend: false, userId: 6},
-  {firstName: "James", lastName: "Phelps", profilePicture: "images/profile/user8.jpg", isMyfriend: false, userId: 7}
+  {firstName: "John", lastName: "Doe", profilePicture: "images/profile/user1.jpg", userLocation: "California", occupation: "Doctor", numberOfFriends: 50, isMyfriend: true, userId: 0},
+  {firstName: "Jenn", lastName: "Jones", profilePicture: "images/profile/user2.jpg", userLocation: "Los Angeles", occupation: "Film Producer", numberOfFriends: 60, isMyfriend: false, userId: 1},
+  {firstName: "Fred", lastName: "Johnson", profilePicture: "images/profile/user3.jpg", userLocation: "Irvine", occupation: "Machinist", numberOfFriends: 73, isMyfriend: true, userId: 2},
+  {firstName: "Alex", lastName: "Anderson", profilePicture: "images/profile/user4.jpg", userLocation: "Long Beach", occupation: "Dietician", numberOfFriends: 84, isMyfriend: false, userId: 3},
+  {firstName: "Harry", lastName: "Thompson", profilePicture: "images/profile/user5.jpg", userLocation: "San Diego", occupation: "Lifeguard", numberOfFriends: 95, isMyfriend: false, userId: 4},
+  {firstName: "Betty", lastName: "Aaron", profilePicture: "images/profile/user6.jpg", userLocation: "Tustin", occupation: "Surgeon", numberOfFriends: 208, isMyfriend: false, userId: 5},
+  {firstName: "Alfred", lastName: "Nixon", profilePicture: "images/profile/user7.jpg", userLocation: "Riverside", occupation: "Butcher", numberOfFriends: 53, isMyfriend: false, userId: 6},
+  {firstName: "James", lastName: "Phelps", profilePicture: "images/profile/user8.jpg", userLocation: "San Francisco", occupation: "Antique Dealer", numberOfFriends: 88, isMyfriend: false, userId: 7}
 ];
 
 var timelineArray = [
   {userId: 0, postId: 0, date: 20160225, doILike: false, timeLinePicture: "images/timeline/beautiful-04.jpg", bodyText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,"},
   {userId: 1, postId: 1, date: 20160225, doILike: false, timeLinePicture: null, bodyText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,"},
-  {userId: 2, postId: 2, date: 20160225, doILike: false, timeLinePicture: null, bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere"},
+  {userId: 2, postId: 2, date: 20160225, doILike: false, timeLinePicture: "images/timeline/1.jpg", bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere"},
   {userId: 3, postId: 3, date: 20160225, doILike: false, timeLinePicture: null, bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas"},
   {userId: 4, postId: 4, date: 20160225, doILike: false, timeLinePicture: "images/timeline/189c.jpg", bodyText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,"},
   {userId: 5, postId: 5, date: 20160225, doILike: false, timeLinePicture: null, bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex"},
@@ -27,7 +27,7 @@ var timelineArray = [
   {userId: 5, postId: 14, date: 20160225, doILike: false, timeLinePicture: null, bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex"},
   {userId: 6, postId: 15, date: 20160225, doILike: false, timeLinePicture: "images/timeline/desktop_3.jpg", bodyText: "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores. At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles. Ma quande lingues coalesce, li grammatica del resultant lingue es plu simplic e regulari quam ti del coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam li existent Europan lingues. It va esser tam simplic quam Occidental in fact, it va esser Occidental. A un Angleso it va semblar un simplificat Angles, quam un skeptic Cambridge amico dit me que Occidental es.Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores. At solmen va esser necessi far uniform grammatica, pronunciation e plu sommun paroles."},
   {userId: 7, postId: 16, date: 20160225, doILike: false, timeLinePicture: null, bodyText: "LLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar"},
-  {userId: 0, postId: 17, date: 20160225, doILike: true, timeLinePicture: null, bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem"}
+  {userId: 0, postId: 17, date: 20160225, doILike: true, timeLinePicture: "images/timeline/2.jpg", bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem"}
 ]
 
 var sponsorsProfile = [
@@ -49,11 +49,17 @@ function addAFriend(userObject){
   var friendProfile = document.createElement("a");
   //friendProfile.setAttribute("href", "#");
   var friendPicture = document.createElement("img");
+  var friendsDiv = document.createElement("div");
+  var nameP = document.createElement("p");
+  var lineBr = document.createElement("br");
+  friendsDiv.setAttribute("class", "thumbnail-height");
   friendPicture.setAttribute("class", "img-thumbnail");
   friendPicture.setAttribute("src", userObject.profilePicture);
   var nameText = document.createTextNode(userObject.firstName + " " + userObject.lastName);
-  friendProfile.appendChild(friendPicture);
-  friendProfile.appendChild(nameText);
+  friendsDiv.appendChild(friendPicture);
+  //friendsDiv.appendChild(lineBr);
+  friendsDiv.appendChild(nameText);
+  friendProfile.appendChild(friendsDiv);
   var friendsLocation;
   if (userObject.isMyfriend == true){
     friendsLocation = document.getElementById("yourFriends");
@@ -127,8 +133,8 @@ function addAllTimeline(usersArray, timelineArray){
       addAPost(usersArray[timelineArray[i].userId], timelineArray[i] );
       postcounter++;
     }
-
   }
+  profileListeners();
 }
 
 function addAPost(userobj, inputObj){
@@ -138,6 +144,7 @@ function addAPost(userobj, inputObj){
   var secondDiv = document.createElement("div");
   secondDiv.setAttribute("class" , "panel-heading");
   var headerLink = document.createElement("a");
+  headerLink.setAttribute("class" , "view-profile");
   var headerProfileImage = document.createElement("img");
   headerProfileImage.setAttribute("class", "img-post");
   headerProfileImage.setAttribute("src", userobj.profilePicture);
@@ -266,16 +273,76 @@ function addNews(whichStory){
   newsContainer.appendChild(newsListItem);
 }
 
-function displayProfile(user){
+function displayProfile(e){
   removeAllPosts();
-  var container = getElementById("posts");
-  
+  var whichUser;
+  var childUser;
+  if( e.target.getAttribute("src")){
+    whichUser = e.target.getAttribute("src");
+  }
+  else{
+    whichUser = e.target.firstChild.getAttribute("src");
+  }
+  var userId;
+  for( var i = 0; i < usersArray.length; i++ ){
+    if( whichUser == usersArray[i].profilePicture){
+      userId=i;
+    }
+  }
+  var container = document.getElementById("posts");
+  var outterPanel = document.createElement("div");
+  outterPanel.setAttribute("class", "panel panel-default");
+  var panelBody = document.createElement("div");
+  panelBody.setAttribute("class", "panel-body")
+  var rowDiv = document.createElement("div");
+  rowDiv.setAttribute("class", "row");
+  var colDiv = document.createElement("div");
+  colDiv.setAttribute("class", "col-sm-6");
+  var profileImage = document.createElement("img");
+  profileImage.setAttribute("src", usersArray[userId].profilePicture);
+  profileImage.setAttribute("class", "img-responsive");
+  var textColDiv = document.createElement("div");
+  textColDiv.setAttribute("class", "col-sm-6");
+  var profileHeader = document.createElement("h5");
+  var profileHeaderText = document.createTextNode (usersArray[userId].firstName + " " + usersArray[userId].lastName + "'s Profile");
+  var locationElement = document.createElement("h5");
+  var locationText = document.createTextNode("Location: " + usersArray[userId].userLocation);
+  var occupationElement = document.createElement("h5");
+  var occupationText = document.createTextNode("Occupation: " + usersArray[userId].occupation);
+  var friendsElement = document.createElement("h5");
+  var friendsText = document.createTextNode("Number of friends: " + usersArray[userId].numberOfFriends);
+  friendsElement.appendChild(friendsText);
+  occupationElement.appendChild(occupationText);
+  locationElement.appendChild(locationText);
+  profileHeader.appendChild(profileHeaderText);
+  textColDiv.appendChild(profileHeader);
+  textColDiv.appendChild(locationElement);
+  textColDiv.appendChild(occupationElement)
+  textColDiv.appendChild(friendsElement);
+  colDiv.appendChild(profileImage);
+  rowDiv.appendChild(colDiv);
+  rowDiv.appendChild(textColDiv);
+  panelBody.appendChild(rowDiv);
+  outterPanel.appendChild(panelBody);
+  container.appendChild(outterPanel);
+}
+
+function usersPictures(user){
+
+}
+
+function profileListeners(){
+  var profilePic = document.getElementsByClassName("view-profile");
+  for (var i = 0; i < profilePic.length; i++){
+    profilePic[i].addEventListener("click", displayProfile);
+  }
 }
 
 
 var news;
 var response;
 newsRequest();
+removeAllPosts();
 addAllFriends(usersArray);
 addAllTimeline(usersArray, timelineArray);
 var addToNotFriends = document.getElementById("notYourFriends");
@@ -287,3 +354,4 @@ statusButton.addEventListener("click", updateStatusText);
 var likedPosts = document.getElementById("liked-posts");
 likedPosts.addEventListener("click", showLikedPost);
 likeButtonListeners();
+profileListeners();
