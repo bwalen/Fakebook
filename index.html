@@ -15,16 +15,16 @@
             <div class="navbar-header">
               <a class="navbar-brand" href="#"><img width="20px" src="images/Facebook.png"></a>
             </div>
-            <form id="form-status" class="navbar-form navbar-left" role="status">
+            <form id="form-status"  class="navbar-form navbar-left" role="status">
               <div class="form-group">
-                <input id="status-input" type="text" class="form-control" placeholder="Update Your Status">
+                <input id="status-input" class="form-control" placeholder="Update Your Status">
               </div>
               <button id="status-submit" type="button" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-              <li><a class="navbar-fixed" href="#"><img src="images/profile/blank-small.jpg"></li>
+              <li><a class="navbar-fixed" id="timeline" >View your timeline</a></li>
+              <li><a class="navbar-fixed"><img src="images/profile/blank-small.jpg"></li>
               <li>Brian Walen</a></li>
-              <li><a class="navbar-fixed" href="#">Home</a></li>
             </ul>
           </div>
         </div>
@@ -32,7 +32,7 @@
     </nav>
     <div class="container-fluid">
       <div class="bodycontent row">
-        <div class="hidden-xs col-sm-4 col-md-3">
+        <div class="hidden-xs hidden-sm col-md-3">
           <div class="panel panel-default">
             <div class="panel-body">
               <h5>YOUR CURRENT STATUS</h5>
@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-      <div class="col-xs-9 col-sm-9 col-md-6 show" id="posts">
+      <div class="col-xs-9 col-sm-9 col-md-6" id="posts">
       </div>
     </div>
   </div>

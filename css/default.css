@@ -1,5 +1,5 @@
 #status-input{
-  width: 300px;
+  width: 250px;
 }
 
 .navbar-inverse{
@@ -22,9 +22,9 @@
 
 .right-side-bar{
   position: fixed;
-  right: 40px;
+  right: 25px;
   top: 70px;
-  width: 21%;
+  width: 22%;
 }
 
 .bodycontent{
