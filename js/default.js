@@ -120,6 +120,7 @@ function changeAFriend(e){
 }
 
 function addAllTimeline(usersArray, timelineArray){
+  //adds the time line posts to the page
   var postcounter = 0;
   var randomnumber;
   for( var i = 0; i < timelineArray.length; i++)
@@ -138,6 +139,7 @@ function addAllTimeline(usersArray, timelineArray){
 }
 
 function addAPost(userobj, inputObj){
+  //used to add a single post to the timeline when passed a user object and a post object
   var timeLineLocation = document.getElementById("posts");
   var outterMostDiv = document.createElement("div");
   outterMostDiv.setAttribute("class" , "panel panel-default");
@@ -192,6 +194,7 @@ function addAPost(userobj, inputObj){
 }
 
 function removeAllPosts(){
+  //deletes everything from the timeline
   var postsContainer = document.getElementById("posts");
   while (postsContainer.firstChild){
     postsContainer.removeChild(postsContainer.firstChild);
@@ -291,6 +294,7 @@ function displayProfile(e){
       userId=i;
     }
   }
+  
   var container = document.getElementById("posts");
   var outterPanel = document.createElement("div");
   outterPanel.setAttribute("class", "panel panel-default");
@@ -328,10 +332,10 @@ function displayProfile(e){
   outterPanel.appendChild(panelBody);
   container.appendChild(outterPanel);
   usersPictures(userId);
+  displayUsersPosts(userId);
 }
 
 function usersPictures(user){
-  console.log(user);
   var container = document.getElementById("posts");
   var outterPanel = document.createElement("div");
   outterPanel.setAttribute("class", "panel panel-default");
@@ -367,6 +371,15 @@ function profileListeners(){
   var profilePic = document.getElementsByClassName("view-profile");
   for (var i = 0; i < profilePic.length; i++){
     profilePic[i].addEventListener("click", displayProfile);
+  }
+}
+
+function displayUsersPosts(user){
+  for( var i = 0; i < timelineArray.length; i++){
+    if(timelineArray[i].userId == user ){
+      addAPost(usersArray[user], timelineArray[i]);
+      console.log(i);
+    }
   }
 }
 
