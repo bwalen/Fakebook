@@ -144,7 +144,9 @@ function addAPost(userobj, inputObj){
   var secondDiv = document.createElement("div");
   secondDiv.setAttribute("class" , "panel-heading");
   var headerLink = document.createElement("a");
-  headerLink.setAttribute("class" , "view-profile");
+  if(userobj.numberOfFriends >= 0){ //adds class only to real users so that sponsors do not have a profile listener
+    headerLink.setAttribute("class" , "view-profile");
+  }
   var headerProfileImage = document.createElement("img");
   headerProfileImage.setAttribute("class", "img-post");
   headerProfileImage.setAttribute("src", userobj.profilePicture);
@@ -325,10 +327,40 @@ function displayProfile(e){
   panelBody.appendChild(rowDiv);
   outterPanel.appendChild(panelBody);
   container.appendChild(outterPanel);
+  usersPictures(userId);
 }
 
 function usersPictures(user){
+  console.log(user);
+  var container = document.getElementById("posts");
+  var outterPanel = document.createElement("div");
+  outterPanel.setAttribute("class", "panel panel-default");
+  var panelBody = document.createElement("div");
+  panelBody.setAttribute("class", "panel-body");
+  var rowDiv = document.createElement("div");
+  rowDiv.setAttribute("class", "row");
+  var colDiv = document.createElement("div");
+  colDiv.setAttribute("class", "col-sm-12");
+  colDiv.setAttribute("id", "pictures");
+  var imagesCreate = document.createElement("img");
+  imagesCreate.setAttribute("class", "img-responsive");
+  rowDiv.appendChild(colDiv);
+  panelBody.appendChild(rowDiv);
+  outterPanel.appendChild(panelBody);
+  container.appendChild(outterPanel);
+  for( var i = 0 ; i < timelineArray.length; i++){
+    if(user == timelineArray[i].userId && timelineArray[i].timeLinePicture){
+      addAPicture(timelineArray[i].timeLinePicture);
+    }
+  }
+}
 
+function addAPicture(url){
+  var pictureLocation = document.getElementById("pictures");
+  var pictureElement = document.createElement("img");
+  pictureElement.setAttribute("class", "img-responsive");
+  pictureElement.setAttribute("src", url);
+  pictureLocation.appendChild(pictureElement);
 }
 
 function profileListeners(){
@@ -338,11 +370,9 @@ function profileListeners(){
   }
 }
 
-
 var news;
 var response;
 newsRequest();
-removeAllPosts();
 addAllFriends(usersArray);
 addAllTimeline(usersArray, timelineArray);
 var addToNotFriends = document.getElementById("notYourFriends");
