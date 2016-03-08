@@ -1,5 +1,5 @@
 #status-input{
-  width: 400px;
+  width: 300px;
 }
 
 .navbar-inverse{
@@ -33,12 +33,18 @@
 }
 
 .thumbnail-height{
-    height: 140px;
+    height: 130px;
 }
 
-.img-thumbnail{
-  width: 110px;
-  margin: 10px;
+.img-friends{
+  float: left;
+  max-height: 100%;
+  padding-top: 10px;
+  padding-right: 5px;
+}
+
+.name-text{
+  padding-top: 20%;
 }
 
 .img-post{

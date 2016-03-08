@@ -51,14 +51,15 @@ function addAFriend(userObject){
   var friendPicture = document.createElement("img");
   var friendsDiv = document.createElement("div");
   var nameP = document.createElement("p");
-  var lineBr = document.createElement("br");
   friendsDiv.setAttribute("class", "thumbnail-height");
-  friendPicture.setAttribute("class", "img-thumbnail");
+  friendPicture.setAttribute("class", "img-friends");
   friendPicture.setAttribute("src", userObject.profilePicture);
+  var textP = document.createElement("p");
+  textP.setAttribute("class", "name-text");
   var nameText = document.createTextNode(userObject.firstName + " " + userObject.lastName);
   friendsDiv.appendChild(friendPicture);
-  //friendsDiv.appendChild(lineBr);
-  friendsDiv.appendChild(nameText);
+  textP.appendChild(nameText);
+  friendsDiv.appendChild(textP);
   friendProfile.appendChild(friendsDiv);
   var friendsLocation;
   if (userObject.isMyfriend == true){
@@ -294,7 +295,7 @@ function displayProfile(e){
       userId=i;
     }
   }
-  
+
   var container = document.getElementById("posts");
   var outterPanel = document.createElement("div");
   outterPanel.setAttribute("class", "panel panel-default");
