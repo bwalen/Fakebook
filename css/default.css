@@ -57,6 +57,11 @@
   float: right;
 }
 
+#remove-friend{
+  color: red;
+}
+
+
 .liked-button{
   width: 120px;
   float: right;
