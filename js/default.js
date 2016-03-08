@@ -254,7 +254,8 @@ function showLikedPost(){
 
 function newsRequest(){
   news = new XMLHttpRequest();
-  news.open("GET" , "http://api.nytimes.com/svc/search/v2/articlesearch.json?fl=web_url%2Csnippet%2Clead_paragraph&api-key=ba97582bc69cd83e731a2b0260adee46%3A5%3A74617978", true);
+  //news.open("GET" , "http://api.nytimes.com/svc/search/v2/articlesearch.json?fl=web_url%2Csnippet%2Clead_paragraph&api-key=ba97582bc69cd83e731a2b0260adee46%3A5%3A74617978", true);
+  news.open("GET" , "http://api.nytimes.com/svc/search/v2/articlesearch.json?fl=headline%2Cweb_url%2Csnippet%2Clead_paragraph&api-key=ba97582bc69cd83e731a2b0260adee46%3A5%3A74617978", true);
   news.send();
   news.addEventListener("readystatechange", processNewsRequest);
 }
@@ -262,6 +263,7 @@ function newsRequest(){
 function processNewsRequest(e){
   if(news.readyState == 4 && news.status == 200){
     response = JSON.parse(news.responseText);
+    console.log(response);
     removeNews();
   }
   for(var i = 0 ; i < 3 ; i++){
@@ -280,11 +282,14 @@ function addNews(whichStory){
   var newsContainer = document.getElementById("news");
   var newslink = document.createElement("a");
   var newsListItem = document.createElement("li");
-  var stringBreakdown = response.response.docs[whichStory].snippet.slice(0, 70);
+  var articleTitle = response.response.docs[whichStory].headline.print_headline;
+  var stringBreakdown = response.response.docs[whichStory].snippet.slice(0, 45);
   newslink.setAttribute("href", response.response.docs[whichStory].web_url);
-  var linkText = document.createTextNode(stringBreakdown);
+  var linkText = document.createTextNode(articleTitle + ": ");
+  var articleText = document.createTextNode(stringBreakdown + "...");
   newslink.appendChild(linkText);
   newsListItem.appendChild(newslink);
+  newsListItem.appendChild(articleText);
   newsContainer.appendChild(newsListItem);
 }
 

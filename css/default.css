@@ -57,6 +57,10 @@
   float: right;
 }
 
+.img-responsive{
+  padding: 5px;
+}
+
 #remove-friend{
   color: red;
 }
