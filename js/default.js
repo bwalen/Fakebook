@@ -146,6 +146,8 @@ function addAllTimeline(usersArray, timelineArray){
   }
   likeButtonListeners();
   profileListeners();
+  var addFriend = document.getElementById("friend-panel");
+  addFriend.addEventListener("click", changeAFriend);
 }
 
 function addAPost(userobj, inputObj){
@@ -431,17 +433,36 @@ function addFriendPanel(){
   headerElement.appendChild(headerText);
   secondDiv.appendChild(headerElement);
   outterMostDiv.appendChild(secondDiv);
-
   var bodyDiv = document.createElement("div");
-  bodyDiv.setAttribute("class", "panel-body");
-
-
-
-
-
-
+  bodyDiv.setAttribute("class", "panel-body")
+  bodyDiv.setAttribute("id", "friend-panel");
   outterMostDiv.appendChild(bodyDiv);
   timeLineLocation.appendChild(outterMostDiv);
+  for(var i = 0; i < usersArray.length; i++)
+  {
+    if(usersArray[i].isMyfriend==false){
+      addFriendToPanel(usersArray[i]);
+    }
+  }
+}
+
+function addFriendToPanel(userObj){
+  var bodyDiv = document.getElementById("friend-panel");
+  var friendSpan = document.createElement("span");
+  friendSpan.setAttribute("class", "col-sm-4 col-xs-4");
+  var friendPicture = document.createElement("img");
+  var pictureLink = document.createElement("a");
+  pictureLink.setAttribute("class", "img-friends");
+  friendPicture.setAttribute("src", userObj.profilePicture);
+  friendPicture.setAttribute("class", "img-responsive");
+  var userNameP = document.createElement("p");
+  userNameP.setAttribute("class", "text-center");
+  var userNameText = document.createTextNode(userObj.firstName + " " + userObj.lastName);
+  userNameP.appendChild(userNameText);
+  pictureLink.appendChild(friendPicture);
+  pictureLink.appendChild(userNameP);
+  friendSpan.appendChild(pictureLink);
+  bodyDiv.appendChild(friendSpan);
 }
 
 var news;
