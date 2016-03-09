@@ -129,6 +129,7 @@ function changeAFriend(e){
 
 function addAllTimeline(usersArray, timelineArray){
   //adds the time line posts to the page
+  addFriendPanel();
   var postcounter = 0;
   var randomnumber;
   for( var i = 0; i < timelineArray.length; i++)
@@ -417,6 +418,30 @@ function removeAFriend(e){
   addAllFriends(usersArray);
   removeAllPosts();
   addAllTimeline(usersArray, timelineArray);
+}
+
+function addFriendPanel(){
+  var timeLineLocation = document.getElementById("posts");
+  var outterMostDiv = document.createElement("div");
+  outterMostDiv.setAttribute("class" , "visible-xs-block visible-sm-block panel panel-default");
+  var secondDiv = document.createElement("div");
+  secondDiv.setAttribute("class" , "panel-heading");
+  var headerElement = document.createElement("h5");
+  var headerText = document.createTextNode("PEOPLE YOU MIGHT KNOW");
+  headerElement.appendChild(headerText);
+  secondDiv.appendChild(headerElement);
+  outterMostDiv.appendChild(secondDiv);
+
+  var bodyDiv = document.createElement("div");
+  bodyDiv.setAttribute("class", "panel-body");
+
+
+
+
+
+
+  outterMostDiv.appendChild(bodyDiv);
+  timeLineLocation.appendChild(outterMostDiv);
 }
 
 var news;
