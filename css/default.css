@@ -33,7 +33,7 @@
 }
 
 .thumbnail-height{
-    height: 130px;
+    height: 120px;
 }
 
 .img-friends{
@@ -45,6 +45,7 @@
 
 .name-text{
   padding-top: 20%;
+  overflow: hidden;
 }
 
 .img-post{
@@ -65,7 +66,6 @@
   color: red;
 }
 
-
 .liked-button{
   width: 120px;
   float: right;
@@ -80,5 +80,6 @@ body{
 }
 
 a{
+  font-weight: bold;
   color: #48649f;
 }

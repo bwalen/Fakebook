@@ -263,7 +263,6 @@ function newsRequest(){
 function processNewsRequest(e){
   if(news.readyState == 4 && news.status == 200){
     response = JSON.parse(news.responseText);
-    console.log(response);
     removeNews();
   }
   for(var i = 0 ; i < 3 ; i++){
@@ -317,12 +316,12 @@ function displayProfile(e){
   var rowDiv = document.createElement("div");
   rowDiv.setAttribute("class", "row");
   var colDiv = document.createElement("div");
-  colDiv.setAttribute("class", "col-sm-6");
+  colDiv.setAttribute("class", "col-sm-6 col-xs-6");
   var profileImage = document.createElement("img");
   profileImage.setAttribute("src", usersArray[userId].profilePicture);
   profileImage.setAttribute("class", "img-responsive");
   var textColDiv = document.createElement("div");
-  textColDiv.setAttribute("class", "col-sm-6");
+  textColDiv.setAttribute("class", "col-sm-6 col-xs-6");
   var profileHeader = document.createElement("h5");
   var profileHeaderText = document.createTextNode (usersArray[userId].firstName + " " + usersArray[userId].lastName + "'s Profile");
   var locationElement = document.createElement("h5");
