@@ -46,16 +46,15 @@ var sponsorsProfile = [
 ]
 
 var sponsorsPosts = [
-  {userId: 0, postId: 0, date: 20160225, doILike: false, timeLinePicture: "images/timeline/amazon1.png", timeLineLink: "http://www.amazon.com", bodyText: "Amazon.com and you're done."},
-  {userId: 1, postId: 1, date: 20160225, doILike: false, timeLinePicture: "images/timeline/twitter.jpg", timeLineLink: "http://www.twitter.com", bodyText: "The best way to discover what's new in your world."},
-  {userId: 2, postId: 2, date: 20160225, doILike: false, timeLinePicture: "images/timeline/yelp.jpg", timeLineLink: "http://www.yelp.com", bodyText: "Real People.  Real Reviews."},
-  {userId: 3, postId: 3, date: 20160225, doILike: false, timeLinePicture: "images/timeline/youtube.png", timeLineLink: "http://www.youtube.com", bodyText: "Broadcast Yourself!"}
+  {userId: 8, postId: 26, date: 20160225, doILike: false, timeLinePicture: "images/timeline/amazon1.png", timeLineLink: "http://www.amazon.com", bodyText: "Amazon.com and you're done."},
+  {userId: 9, postId: 27, date: 20160225, doILike: false, timeLinePicture: "images/timeline/twitter.jpg", timeLineLink: "http://www.twitter.com", bodyText: "The best way to discover what's new in your world."},
+  {userId: 10, postId: 28, date: 20160225, doILike: false, timeLinePicture: "images/timeline/yelp.jpg", timeLineLink: "http://www.yelp.com", bodyText: "Real People.  Real Reviews."},
+  {userId: 11, postId: 29, date: 20160225, doILike: false, timeLinePicture: "images/timeline/youtube.png", timeLineLink: "http://www.youtube.com", bodyText: "Broadcast Yourself!"}
 ]
 
 function addAFriend(userObject){
   //adds a person by appending the dom, either as a friend or not using a user object as input
   var friendProfile = document.createElement("a");
-  //friendProfile.setAttribute("href", "#");
   var friendPicture = document.createElement("img");
   var friendsDiv = document.createElement("div");
   var nameP = document.createElement("p");
@@ -144,8 +143,6 @@ function addAllTimeline(usersArray, timelineArray){
       postcounter++;
     }
   }
-  likeButtonListeners();
-  profileListeners();
   var addFriend = document.getElementById("friend-panel");
   addFriend.addEventListener("click", changeAFriend);
 }
@@ -158,6 +155,7 @@ function addAPost(userobj, inputObj){
   var secondDiv = document.createElement("div");
   secondDiv.setAttribute("class" , "panel-heading");
   var headerLink = document.createElement("a");
+  headerLink.setAttribute("userid", userobj.userId);
   if(userobj.numberOfFriends >= 0){ //adds class only to real users so that sponsors do not have a profile listener
     headerLink.setAttribute("class" , "view-profile");
   }
@@ -169,12 +167,12 @@ function addAPost(userobj, inputObj){
   if(inputObj.doILike == true){
     likeButton.setAttribute("class", "like-button liked-button");
     likeButton.setAttribute("src", "images/like3.png");
-    likeButton.setAttribute("id", inputObj.postId);
+    likeButton.setAttribute("postid", inputObj.postId);
   }
   else{
     likeButton.setAttribute("class" , "like-button");
     likeButton.setAttribute("src" , "images/like10.png");
-    likeButton.setAttribute("id", inputObj.postId);
+    likeButton.setAttribute("postid", inputObj.postId);
   }
   var bodyDiv = document.createElement("div");
   bodyDiv.setAttribute("class", "panel-body");
@@ -214,23 +212,15 @@ function removeAllPosts(){
 }
 
 function likeButton(e){
-  if( timelineArray[e.toElement.getAttribute("id")].doILike == false){
-    timelineArray[e.toElement.getAttribute("id")].doILike = true;
+  if( timelineArray[e.toElement.getAttribute("postid")].doILike == false){
+    timelineArray[e.toElement.getAttribute("postid")].doILike = true;
     e.toElement.setAttribute("src", "images/like3.png");
     e.toElement.setAttribute("class", "liked-button");
   }
   else{
-    timelineArray[e.toElement.getAttribute("id")].doILike = false;
+    timelineArray[e.toElement.getAttribute("postid")].doILike = false;
     e.toElement.setAttribute("src", "images/like10.png");
     e.toElement.setAttribute("class", "like-button");
-  }
-}
-
-function likeButtonListeners(){
-  //adds listeners to all like buttons, and liked buttons.
-  var likeAPost = document.getElementsByClassName("like-button");
-  for (i = 0; i < likeAPost.length; i++){
-    likeAPost[i].addEventListener("click", likeButton);
   }
 }
 
@@ -251,8 +241,6 @@ function showLikedPost(){
   {
     addAPost(usersArray[likedPostsArray[i].userId], likedPostsArray[i] );
   }
-  likeButtonListeners();
-  profileListeners();
 }
 
 function newsRequest(){
@@ -295,22 +283,8 @@ function addNews(whichStory){
   newsContainer.appendChild(newsListItem);
 }
 
-function displayProfile(e){
+function displayProfile(userId){
   removeAllPosts();
-  var whichUser;
-  var childUser;
-  if( e.target.getAttribute("src")){
-    whichUser = e.target.getAttribute("src");
-  }
-  else{
-    whichUser = e.target.firstChild.getAttribute("src");
-  }
-  var userId;
-  for( var i = 0; i < usersArray.length; i++ ){
-    if( whichUser == usersArray[i].profilePicture){
-      userId=i;
-    }
-  }
   var container = document.getElementById("posts");
   var outterPanel = document.createElement("div");
   outterPanel.setAttribute("class", "panel panel-default");
@@ -355,7 +329,6 @@ function displayProfile(e){
   container.appendChild(outterPanel);
   usersPictures(userId);
   displayUsersPosts(userId);
-  likeButtonListeners();
   scroll(0,0);
   var removeFriendListener = document.getElementById("remove-friend");
   removeFriendListener.addEventListener("click", removeAFriend);
@@ -391,13 +364,6 @@ function addAPicture(url){
   pictureElement.setAttribute("class", "img-responsive");
   pictureElement.setAttribute("src", url);
   pictureLocation.appendChild(pictureElement);
-}
-
-function profileListeners(){
-  var profilePic = document.getElementsByClassName("view-profile");
-  for (var i = 0; i < profilePic.length; i++){
-    profilePic[i].addEventListener("click", displayProfile);
-  }
 }
 
 function displayUsersPosts(user){
@@ -465,6 +431,18 @@ function addFriendToPanel(userObj){
   bodyDiv.appendChild(friendSpan);
 }
 
+function postsProcess(e){
+  if(e.toElement.hasAttribute("postId")){
+    likeButton(e);
+  }
+  if(e.target.hasAttribute("userid")){
+    displayProfile(e.target.getAttribute("userid"));
+  }
+  if(e.target.parentNode.hasAttribute("userid")){
+    displayProfile(e.target.parentNode.getAttribute("userid"))
+  }
+}
+
 var news;
 var response;
 newsRequest();
@@ -480,5 +458,5 @@ var likedPosts = document.getElementById("liked-posts");
 likedPosts.addEventListener("click", showLikedPost);
 var viewTimeline = document.getElementById("timeline");
 viewTimeline.addEventListener("click", showTimeLine);
-likeButtonListeners();
-profileListeners();
+var postsListener = document.getElementById("posts");
+postsListener.addEventListener("click", postsProcess);
