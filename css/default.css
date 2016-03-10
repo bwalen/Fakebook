@@ -39,8 +39,11 @@
 .img-friends{
   float: left;
   height: 120px;
-  padding-top: 10px;
-  padding-right: 5px;
+  padding: 5px;
+}
+
+.img-newfriends{
+  float: left;
 }
 
 .name-text{
@@ -59,7 +62,7 @@
 }
 
 .img-responsive{
-  padding: 5px;
+  margin: 10px;
 }
 
 #remove-friend{

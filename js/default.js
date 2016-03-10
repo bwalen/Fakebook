@@ -220,7 +220,6 @@ function showLikedPost(){
 
 function newsRequest(){
   news = new XMLHttpRequest();
-  //news.open("GET" , "http://api.nytimes.com/svc/search/v2/articlesearch.json?fl=web_url%2Csnippet%2Clead_paragraph&api-key=ba97582bc69cd83e731a2b0260adee46%3A5%3A74617978", true);
   news.open("GET" , "http://api.nytimes.com/svc/search/v2/articlesearch.json?fl=headline%2Cweb_url%2Csnippet%2Clead_paragraph&api-key=ba97582bc69cd83e731a2b0260adee46%3A5%3A74617978", true);
   news.send();
   news.addEventListener("readystatechange", processNewsRequest);
@@ -391,11 +390,13 @@ function addFriendPanel(){
 
 function addFriendToPanel(userObj){
   var bodyDiv = document.getElementById("friend-panel");
-  var friendSpan = document.createElement("span");
+  var friendSpan = document.createElement("div");
   friendSpan.setAttribute("class", "col-sm-4 col-xs-4");
   var friendPicture = document.createElement("img");
   var pictureLink = document.createElement("a");
-  pictureLink.setAttribute("class", "img-friends");
+  pictureLink.setAttribute("userid", userObj.userId);
+  pictureLink.setAttribute("friend", false);
+  pictureLink.setAttribute("class", "img-newfriends");
   friendPicture.setAttribute("src", userObj.profilePicture);
   friendPicture.setAttribute("class", "img-responsive");
   var userNameP = document.createElement("p");
