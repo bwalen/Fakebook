@@ -314,6 +314,7 @@ function displayProfile(userId){
   scroll(0,0);
 }
 
+
 function usersPictures(user){
   var container = document.getElementById("posts");
   var outterPanel = document.createElement("div");
@@ -410,6 +411,24 @@ function addFriendToPanel(userObj){
   bodyDiv.appendChild(friendSpan);
 }
 
+function displayEdit(){
+  var element = document.getElementById("edit");
+  element.setAttribute("class", "panel panel-default");
+}
+
+function changeProfile(e){
+  var firstNameElement = document.getElementById("editProfileName");
+  firstNameElement.value = "";
+  var lastNameElement = document.getElementById("editProfileLastName");
+  lastNameElement.value = "";
+  var locationElement = document.getElementById("editProfileLocation");
+  locationElement.value = "";
+  var occupationElement = document.getElementById("editProfileOccupation");
+  occupationElement.value = "";
+  var element = document.getElementById("edit");
+  element.setAttribute("class", "hidden panel panel-default");
+}
+
 function postsProcess(e){
   if(e.toElement.hasAttribute("postId")){
     likeButton(e);
@@ -443,6 +462,18 @@ function postsProcess(e){
   }
   else if(e.target.getAttribute("id")=="your-profile"){
     displayProfile(8);
+  }
+  else if(e.target.getAttribute("id")=="edit-profile"){
+    displayProfile(8);
+    displayEdit();
+  }
+  else if(e.target.getAttribute("id")=="editProfileSubmit"){
+    console.log("working");
+    changeProfile(e);
+  }
+  else if(e.target.getAttribute("id")=="editProfileCancel"){
+    console.log("working2");
+    changeProfile(e);
   }
 }
 
