@@ -314,7 +314,6 @@ function displayProfile(userId){
   scroll(0,0);
 }
 
-
 function usersPictures(user){
   var container = document.getElementById("posts");
   var outterPanel = document.createElement("div");
@@ -416,17 +415,42 @@ function displayEdit(){
   element.setAttribute("class", "panel panel-default");
 }
 
-function changeProfile(e){
-  var firstNameElement = document.getElementById("editProfileName");
-  firstNameElement.value = "";
-  var lastNameElement = document.getElementById("editProfileLastName");
-  lastNameElement.value = "";
-  var locationElement = document.getElementById("editProfileLocation");
-  locationElement.value = "";
-  var occupationElement = document.getElementById("editProfileOccupation");
-  occupationElement.value = "";
+function changeProfile(string){
   var element = document.getElementById("edit");
+  var firstNameElement = document.getElementById("editProfileName");
+  var lastNameElement = document.getElementById("editProfileLastName");
+  var locationElement = document.getElementById("editProfileLocation");
+  var occupationElement = document.getElementById("editProfileOccupation");
+  var profileName = document.getElementById("your-profile");
+  if(string=="cancel"){
+    firstNameElement.value = "";
+    lastNameElement.value = "";
+    locationElement.value = "";
+    occupationElement.value = "";
+  }
+  else{
+    usersArray[8].firstName = firstNameElement.value;
+    usersArray[8].lastName = lastNameElement.value;
+    usersArray[8].userLocation = locationElement.value;
+    usersArray[8].occupation = occupationElement.value;
+    changeProfile("cancel");
+  }
+  displayProfile(8);
+  addName();
   element.setAttribute("class", "hidden panel panel-default");
+}
+
+function addName(){
+  var nameLocation = document.getElementById("your-profile");
+  var nameText = document.createTextNode( " " + usersArray[8].firstName + " " + usersArray[8].lastName);
+  var iconSpan = document.createElement("span");
+  iconSpan.setAttribute("class", "glyphicon glyphicon-user");
+  iconSpan.setAttribute("aria-hidden", "true");
+  while(nameLocation.firstChild){
+    nameLocation.removeChild(nameLocation.firstChild);
+  }
+  nameLocation.appendChild(iconSpan);
+  nameLocation.appendChild(nameText);
 }
 
 function postsProcess(e){
@@ -468,18 +492,17 @@ function postsProcess(e){
     displayEdit();
   }
   else if(e.target.getAttribute("id")=="editProfileSubmit"){
-    console.log("working");
-    changeProfile(e);
+    changeProfile("submit");
   }
   else if(e.target.getAttribute("id")=="editProfileCancel"){
-    console.log("working2");
-    changeProfile(e);
+    changeProfile("cancel");
   }
 }
 
 var news;
 var response;
 newsRequest();
+addName();
 addAllFriends(usersArray);
 addAllTimeline(usersArray, timelineArray);
 var postsListener = document.getElementById("body");
