@@ -39,10 +39,10 @@ var timelineArray = [
 ]
 
 var sponsorsProfile = [
-  {firstName: "Amazon", lastName: "Sponsored Post", profilePicture: "images/profile/amazon.jpg", isMyfriend: true, userId: 0},
-  {firstName: "Twitter", lastName: "Sponsored Post", profilePicture: "images/profile/twitter.png", isMyfriend: true, userId: 1},
-  {firstName: "Yelp", lastName: "Sponsored Post", profilePicture: "images/profile/yelp.png", isMyfriend: true, userId: 2},
-  {firstName: "Youtube", lastName: "Sponsored Post", profilePicture: "images/profile/youtube.png", isMyfriend: true, userId: 3}
+  {firstName: "Amazon", lastName: "Sponsored Post", profilePicture: "images/profile/amazon.jpg", isMyfriend: false, userId: 8},
+  {firstName: "Twitter", lastName: "Sponsored Post", profilePicture: "images/profile/twitter.png", isMyfriend: false, userId: 9},
+  {firstName: "Yelp", lastName: "Sponsored Post", profilePicture: "images/profile/yelp.png", isMyfriend: false, userId: 10},
+  {firstName: "Youtube", lastName: "Sponsored Post", profilePicture: "images/profile/youtube.png", isMyfriend: false, userId: 11}
 ]
 
 var sponsorsPosts = [
@@ -55,6 +55,7 @@ var sponsorsPosts = [
 function addAFriend(userObject){
   //adds a person by appending the dom, either as a friend or not using a user object as input
   var friendProfile = document.createElement("a");
+  friendProfile.setAttribute("userid", userObject.userId);
   var friendPicture = document.createElement("img");
   var friendsDiv = document.createElement("div");
   var nameP = document.createElement("p");
@@ -74,6 +75,7 @@ function addAFriend(userObject){
   }
   else{
     friendsLocation = document.getElementById("notYourFriends");
+    friendProfile.setAttribute("friend", false);
   }
   friendsLocation.appendChild(friendProfile);
 }
@@ -99,33 +101,6 @@ function removeAllFriends(){
   }
 }
 
-function changeAFriend(e){
-  /*this function is called by the event listener for whenever someone clicks on a profile picture,
-  it will change the person to a friend, or remove a friend and add their picture to the correct spot on the page.*/
-  var userNumber = "";
-  var target = e.target;
-  if( target.hasAttribute("src") ){
-    userNumber = target.getAttribute("src");
-  }
-  else if(target.firstChild.hasAttribute("src")){
-    userNumber = target.firstChild.getAttribute("src");
-  }
-  for( var i = 0; i < usersArray.length; i++){
-    if(userNumber == usersArray[i].profilePicture){
-      if(usersArray[i].isMyfriend == true){
-        usersArray[i].isMyfriend = false;
-      }
-      else{
-        usersArray[i].isMyfriend = true;
-      }
-    }
-  }
-  removeAllFriends();
-  addAllFriends(usersArray);
-  removeAllPosts();
-  addAllTimeline(usersArray, timelineArray);
-}
-
 function addAllTimeline(usersArray, timelineArray){
   //adds the time line posts to the page
   addFriendPanel();
@@ -144,7 +119,7 @@ function addAllTimeline(usersArray, timelineArray){
     }
   }
   var addFriend = document.getElementById("friend-panel");
-  addFriend.addEventListener("click", changeAFriend);
+  addFriend.addEventListener("click", changeAfriend);
 }
 
 function addAPost(userobj, inputObj){
@@ -308,10 +283,10 @@ function displayProfile(userId){
   var friendsElement = document.createElement("h5");
   var friendsText = document.createTextNode("Number of friends: " + usersArray[userId].numberOfFriends);
   var removeFriendLink = document.createElement("a");
-  removeFriendLink.setAttribute("id", "remove-friend");
-  removeFriendLink.setAttribute("class", userId);
   var removeFriendText = document.createTextNode("Remove this friend.");
   removeFriendLink.appendChild(removeFriendText);
+  removeFriendLink.setAttribute("id", "remove-friend");
+  removeFriendLink.setAttribute("remove", userId);
   friendsElement.appendChild(friendsText);
   occupationElement.appendChild(occupationText);
   locationElement.appendChild(locationText);
@@ -330,8 +305,6 @@ function displayProfile(userId){
   usersPictures(userId);
   displayUsersPosts(userId);
   scroll(0,0);
-  var removeFriendListener = document.getElementById("remove-friend");
-  removeFriendListener.addEventListener("click", removeAFriend);
 }
 
 function usersPictures(user){
@@ -379,9 +352,13 @@ function showTimeLine(){
   addAllTimeline(usersArray, timelineArray);
 }
 
-function removeAFriend(e){
-  var userNumber = e.target.className;
-  usersArray[userNumber].isMyfriend = false;
+function changeAfriend(userNumber){
+  if(usersArray[userNumber].isMyfriend == false){
+    usersArray[userNumber].isMyfriend=true;
+  }
+  else{
+    usersArray[userNumber].isMyfriend=false;
+  }
   removeAllFriends();
   addAllFriends(usersArray);
   removeAllPosts();
@@ -435,11 +412,23 @@ function postsProcess(e){
   if(e.toElement.hasAttribute("postId")){
     likeButton(e);
   }
-  if(e.target.hasAttribute("userid")){
+  else if(e.target.hasAttribute("userid") && usersArray[e.target.getAttribute("userid")]){
     displayProfile(e.target.getAttribute("userid"));
   }
-  if(e.target.parentNode.hasAttribute("userid")){
+  else if(e.target.parentNode.hasAttribute("userid") && usersArray[e.target.parentNode.getAttribute("userid")].isMyfriend){
     displayProfile(e.target.parentNode.getAttribute("userid"))
+  }
+  else if(e.target.parentNode.parentNode.hasAttribute("userid") && usersArray[e.target.parentNode.parentNode.getAttribute("userid")].isMyfriend){
+    displayProfile(e.target.parentNode.parentNode.getAttribute("userid"));
+  }
+  else if(e.target.parentNode.hasAttribute("friend")){
+    changeAfriend(e.target.parentNode.getAttribute("userid"));
+  }
+  else if(e.target.parentNode.parentNode.hasAttribute("friend")){
+    changeAfriend(e.target.parentNode.parentNode.getAttribute("userid"));
+  }
+  else if(e.target.hasAttribute("remove")){
+    changeAfriend(e.target.getAttribute("remove"));
   }
 }
 
@@ -448,15 +437,11 @@ var response;
 newsRequest();
 addAllFriends(usersArray);
 addAllTimeline(usersArray, timelineArray);
-var addToNotFriends = document.getElementById("notYourFriends");
-addToNotFriends.addEventListener("click", changeAFriend);
-var addToFriends = document.getElementById("yourFriends");
-addToFriends.addEventListener("click", displayProfile);
 var statusButton = document.getElementById("status-submit");
 statusButton.addEventListener("click", updateStatusText);
 var likedPosts = document.getElementById("liked-posts");
 likedPosts.addEventListener("click", showLikedPost);
 var viewTimeline = document.getElementById("timeline");
 viewTimeline.addEventListener("click", showTimeLine);
-var postsListener = document.getElementById("posts");
+var postsListener = document.getElementById("body");
 postsListener.addEventListener("click", postsProcess);
