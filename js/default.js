@@ -201,7 +201,7 @@ function likeButton(e){
   }
 }
 
-function updateStatusText(e){
+function updateStatusText(){
   var statusText = document.getElementById("status");
   while(statusText.firstChild){
     statusText.removeChild(statusText.firstChild);
@@ -228,10 +228,16 @@ function newsRequest(){
 }
 
 function processNewsRequest(e){
+  var numberPosted=0;
+  var checkedArticles=0;
   if(news.readyState == 4 && news.status == 200){
     response = JSON.parse(news.responseText);
-    for(var i = 0 ; i < 3 ; i++){
-      addNews(i);
+    while(numberPosted < 3){
+      if(response.response.docs[checkedArticles].headline.print_headline){
+        addNews(checkedArticles);
+        numberPosted++;
+      }
+      checkedArticles++;
     }
   }
 }
@@ -428,6 +434,12 @@ function postsProcess(e){
   else if(e.target.getAttribute("id")=="timeline"){
     showTimeLine();
   }
+  else if(e.target.getAttribute("id")=="liked-posts"){
+    showLikedPost();
+  }
+  else if(e.target.getAttribute("id")=="status-submit"){
+    updateStatusText();
+  }
 }
 
 var news;
@@ -435,9 +447,5 @@ var response;
 newsRequest();
 addAllFriends(usersArray);
 addAllTimeline(usersArray, timelineArray);
-var statusButton = document.getElementById("status-submit");
-statusButton.addEventListener("click", updateStatusText);
-var likedPosts = document.getElementById("liked-posts");
-likedPosts.addEventListener("click", showLikedPost);
 var postsListener = document.getElementById("body");
 postsListener.addEventListener("click", postsProcess);
