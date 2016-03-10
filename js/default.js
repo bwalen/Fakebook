@@ -139,15 +139,17 @@ function addAPost(userobj, inputObj){
   headerProfileImage.setAttribute("src", userobj.profilePicture);
   var userNameText = document.createTextNode(userobj.firstName + " " + userobj.lastName);
   var likeButton = document.createElement("img");
-  if(inputObj.doILike == true){
-    likeButton.setAttribute("class", "like-button liked-button");
-    likeButton.setAttribute("src", "images/like3.png");
-    likeButton.setAttribute("postid", inputObj.postId);
-  }
-  else{
-    likeButton.setAttribute("class" , "like-button");
-    likeButton.setAttribute("src" , "images/like10.png");
-    likeButton.setAttribute("postid", inputObj.postId);
+  if(userobj.numberOfFriends){
+    if(inputObj.doILike == true){
+      likeButton.setAttribute("class", "like-button liked-button");
+      likeButton.setAttribute("src", "images/like3.png");
+      likeButton.setAttribute("postid", inputObj.postId);
+    }
+    else{
+      likeButton.setAttribute("class" , "like-button");
+      likeButton.setAttribute("src" , "images/like10.png");
+      likeButton.setAttribute("postid", inputObj.postId);
+    }
   }
   var bodyDiv = document.createElement("div");
   bodyDiv.setAttribute("class", "panel-body");
@@ -228,17 +230,9 @@ function newsRequest(){
 function processNewsRequest(e){
   if(news.readyState == 4 && news.status == 200){
     response = JSON.parse(news.responseText);
-    removeNews();
-  }
-  for(var i = 0 ; i < 3 ; i++){
-    addNews(i);
-  }
-}
-
-function removeNews(){
-  var newsContainer = document.getElementById("news");
-  while (newsContainer.firstChild){
-  newsContainer.removeChild(newsContainer.firstChild);
+    for(var i = 0 ; i < 3 ; i++){
+      addNews(i);
+    }
   }
 }
 
@@ -431,6 +425,9 @@ function postsProcess(e){
   else if(e.target.hasAttribute("remove")){
     changeAfriend(e.target.getAttribute("remove"));
   }
+  else if(e.target.getAttribute("id")=="timeline"){
+    showTimeLine();
+  }
 }
 
 var news;
@@ -442,7 +439,5 @@ var statusButton = document.getElementById("status-submit");
 statusButton.addEventListener("click", updateStatusText);
 var likedPosts = document.getElementById("liked-posts");
 likedPosts.addEventListener("click", showLikedPost);
-var viewTimeline = document.getElementById("timeline");
-viewTimeline.addEventListener("click", showTimeLine);
 var postsListener = document.getElementById("body");
 postsListener.addEventListener("click", postsProcess);
