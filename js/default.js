@@ -83,6 +83,7 @@ function addAFriend(userObject){
 function addAllFriends(arrayOfUsers){
   //loops through the user array passing each user to the addAFriend function
   //also sorts friends alphabetically by last name
+  removeAllFriends();
   var sortedArray = _.sortBy(arrayOfUsers, 'lastName');
   for(var i = 0; i < sortedArray.length; i++){
       addAFriend(sortedArray[i]);
@@ -103,6 +104,7 @@ function removeAllFriends(){
 
 function addAllTimeline(usersArray, timelineArray){
   //adds the time line posts to the page
+  removeAllPosts();
   addFriendPanel();
   var postcounter = 0;
   var randomnumber;
@@ -249,6 +251,7 @@ function addNews(whichStory){
   var articleTitle = response.response.docs[whichStory].headline.print_headline;
   var stringBreakdown = response.response.docs[whichStory].snippet.slice(0, 45);
   newslink.setAttribute("href", response.response.docs[whichStory].web_url);
+  newslink.setAttribute("target", "_blank");
   var linkText = document.createTextNode(articleTitle + ": ");
   var articleText = document.createTextNode(stringBreakdown + "...");
   newslink.appendChild(linkText);
@@ -346,11 +349,6 @@ function displayUsersPosts(user){
   }
 }
 
-function showTimeLine(){
-  removeAllPosts();
-  addAllTimeline(usersArray, timelineArray);
-}
-
 function changeAfriend(userNumber){
   if(usersArray[userNumber].isMyfriend == false){
     usersArray[userNumber].isMyfriend=true;
@@ -358,9 +356,7 @@ function changeAfriend(userNumber){
   else{
     usersArray[userNumber].isMyfriend=false;
   }
-  removeAllFriends();
   addAllFriends(usersArray);
-  removeAllPosts();
   addAllTimeline(usersArray, timelineArray);
 }
 
@@ -432,7 +428,7 @@ function postsProcess(e){
     changeAfriend(e.target.getAttribute("remove"));
   }
   else if(e.target.getAttribute("id")=="timeline"){
-    showTimeLine();
+    addAllTimeline(usersArray, timelineArray);
   }
   else if(e.target.getAttribute("id")=="liked-posts"){
     showLikedPost();

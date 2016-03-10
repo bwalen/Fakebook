@@ -74,6 +74,11 @@
   float: right;
 }
 
+.large-screens{
+  max-width: 1500px;
+  text-align: center;
+}
+
 li{
   list-style-image: url("../images/trending.png");
 }
