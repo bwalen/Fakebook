@@ -422,22 +422,19 @@ function changeProfile(string){
   var locationElement = document.getElementById("editProfileLocation");
   var occupationElement = document.getElementById("editProfileOccupation");
   var profileName = document.getElementById("your-profile");
-  if(string=="cancel"){
-    firstNameElement.value = "";
-    lastNameElement.value = "";
-    locationElement.value = "";
-    occupationElement.value = "";
-  }
-  else{
+  if(string=="submit"){
     usersArray[8].firstName = firstNameElement.value;
     usersArray[8].lastName = lastNameElement.value;
     usersArray[8].userLocation = locationElement.value;
     usersArray[8].occupation = occupationElement.value;
-    changeProfile("cancel");
+    addName();
   }
-  displayProfile(8);
-  addName();
+  firstNameElement.value = "";
+  lastNameElement.value = "";
+  locationElement.value = "";
+  occupationElement.value = "";
   element.setAttribute("class", "hidden panel panel-default");
+  displayProfile(8);
 }
 
 function addName(){
