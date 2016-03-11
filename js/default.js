@@ -165,7 +165,7 @@ function addAPost(userobj, inputObj){
   var bodyImage = document.createElement("img");
   var bodyHR = document.createElement("hr");
   var profilePictureLink = document.createElement("a");
-  var dateText = document.createTextNode(inputObj.date);
+  var dateText = document.createTextNode(" on " + inputObj.date);
   if(inputObj.timeLinePicture){//for adding an optional picture to a timeline post
     bodyImage.setAttribute("class" , "img-responsive");
     bodyImage.setAttribute("src", inputObj.timeLinePicture);
@@ -180,11 +180,10 @@ function addAPost(userobj, inputObj){
     bodyDiv.appendChild(bodyHR);
   }
   bodyDiv.appendChild(bodyText);
-  bodyDiv.appendChild(bodyHR);
-  bodyDiv.appendChild(dateText);
   headerLink.appendChild(headerProfileImage);
   headerLink.appendChild(userNameText);
   secondDiv.appendChild(headerLink);
+  secondDiv.appendChild(dateText);
   secondDiv.appendChild(likeButton);
   outterMostDiv.appendChild(secondDiv);
   outterMostDiv.appendChild(bodyDiv);
