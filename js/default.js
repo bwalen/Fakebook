@@ -1,4 +1,4 @@
-var usersArray = [
+var usersArray = [ //data for all users
   {firstName: "John", lastName: "Doe", profilePicture: "images/profile/user1.jpg", userLocation: "California", occupation: "Doctor", numberOfFriends: 50, isMyfriend: true, userId: 0},
   {firstName: "Jenn", lastName: "Jones", profilePicture: "images/profile/user2.jpg", userLocation: "Los Angeles", occupation: "Film Producer", numberOfFriends: 60, isMyfriend: false, userId: 1},
   {firstName: "Fred", lastName: "Johnson", profilePicture: "images/profile/user3.jpg", userLocation: "Irvine", occupation: "Machinist", numberOfFriends: 73, isMyfriend: true, userId: 2},
@@ -7,10 +7,10 @@ var usersArray = [
   {firstName: "Betty", lastName: "Aaron", profilePicture: "images/profile/user6.jpg", userLocation: "Tustin", occupation: "Surgeon", numberOfFriends: 208, isMyfriend: false, userId: 5},
   {firstName: "Alfred", lastName: "Nixon", profilePicture: "images/profile/user7.jpg", userLocation: "Riverside", occupation: "Butcher", numberOfFriends: 53, isMyfriend: false, userId: 6},
   {firstName: "James", lastName: "Phelps", profilePicture: "images/profile/user8.jpg", userLocation: "San Francisco", occupation: "Antique Dealer", numberOfFriends: 88, isMyfriend: false, userId: 7},
-  {firstName: "Brian", lastName: "Walen", profilePicture: "images/profile/blank-large.jpg", userLocation: "Orange County", occupation: "Software Developer", numberOfFriends: 30, isMyfriend: true, userId: 8, isCurrentUser: true}
+  {firstName: "Brian", lastName: "Walen", profilePicture: "images/profile/blank-large.jpg", userLocation: "Orange County", occupation: "Software Developer", numberOfFriends: 2, isMyfriend: true, userId: 8, isCurrentUser: true}
 ];
 
-var timelineArray = [
+var timelineArray = [ //data for all timeline posts
   {userId: 0, postId: 0, date: 20160225, doILike: false, timeLinePicture: "images/timeline/beautiful-04.jpg", bodyText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,"},
   {userId: 1, postId: 1, date: 20160225, doILike: false, timeLinePicture: null, bodyText: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,"},
   {userId: 2, postId: 2, date: 20160225, doILike: false, timeLinePicture: "images/timeline/1.jpg", bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere"},
@@ -39,14 +39,14 @@ var timelineArray = [
   {userId: 0, postId: 25, date: 20160225, doILike: true, timeLinePicture: "images/timeline/2.jpg", bodyText: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem"}
 ]
 
-var sponsorsProfile = [
+var sponsorsProfile = [ //data for sponsored users
   {firstName: "Amazon", lastName: "Sponsored Post", profilePicture: "images/profile/amazon.jpg", isMyfriend: false, userId: 8},
   {firstName: "Twitter", lastName: "Sponsored Post", profilePicture: "images/profile/twitter.png", isMyfriend: false, userId: 9},
   {firstName: "Yelp", lastName: "Sponsored Post", profilePicture: "images/profile/yelp.png", isMyfriend: false, userId: 10},
   {firstName: "Youtube", lastName: "Sponsored Post", profilePicture: "images/profile/youtube.png", isMyfriend: false, userId: 11}
 ]
 
-var sponsorsPosts = [
+var sponsorsPosts = [ //data for sponsored posts
   {userId: 8, postId: 26, date: 20160225, doILike: false, timeLinePicture: "images/timeline/amazon1.png", timeLineLink: "http://www.amazon.com", bodyText: "Amazon.com and you're done."},
   {userId: 9, postId: 27, date: 20160225, doILike: false, timeLinePicture: "images/timeline/twitter.jpg", timeLineLink: "http://www.twitter.com", bodyText: "The best way to discover what's new in your world."},
   {userId: 10, postId: 28, date: 20160225, doILike: false, timeLinePicture: "images/timeline/yelp.jpg", timeLineLink: "http://www.yelp.com", bodyText: "Real People.  Real Reviews."},
@@ -90,12 +90,11 @@ function addAllFriends(arrayOfUsers){
     if(sortedArray[i].isCurrentUser!=true){
       addAFriend(sortedArray[i]);
     }
-
-    }
+  }
 }
 
 function removeAllFriends(){
-  //removes all friends and not-notfriends from the page
+  //removes all friends and not-notfriends from the left side panel
   var friendsContainer = document.getElementById("yourFriends");
   while (friendsContainer.firstChild){
     friendsContainer.removeChild(friendsContainer.firstChild);
@@ -114,7 +113,7 @@ function addAllTimeline(usersArray, timelineArray){
   var randomnumber;
   for( var i = timelineArray.length-1; i >= 0; i--)
   {
-    if( postcounter == 1 || postcounter == 7 || postcounter == 15 || postcounter==25){
+    if( postcounter == 1 || postcounter == 7 || postcounter == 15 || postcounter==25){//adds sponsored posts
       randomnumber = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
       addAPost(sponsorsProfile[randomnumber], sponsorsPosts[randomnumber]);
       postcounter++;
@@ -145,7 +144,7 @@ function addAPost(userobj, inputObj){
   headerProfileImage.setAttribute("src", userobj.profilePicture);
   var userNameText = document.createTextNode(userobj.firstName + " " + userobj.lastName);
   var likeButton = document.createElement("img");
-  if(userobj.numberOfFriends){
+  if(userobj.numberOfFriends){//makes sure sponsored posts do not get like buttons
     if(inputObj.doILike == true){
       likeButton.setAttribute("class", "like-button liked-button");
       likeButton.setAttribute("src", "images/like3.png");
@@ -163,10 +162,10 @@ function addAPost(userobj, inputObj){
   var bodyImage = document.createElement("img");
   var bodyHR = document.createElement("hr");
   var profilePictureLink = document.createElement("a");
-  if(inputObj.timeLinePicture){
+  if(inputObj.timeLinePicture){//for adding an optional picture to a timeline post
     bodyImage.setAttribute("class" , "img-responsive");
     bodyImage.setAttribute("src", inputObj.timeLinePicture);
-    if(inputObj.timeLineLink){
+    if(inputObj.timeLineLink){//for adding an optional link to a time
       profilePictureLink.setAttribute("href", inputObj.timeLineLink);
       profilePictureLink.appendChild(bodyImage);
       bodyDiv.appendChild(profilePictureLink);
@@ -195,6 +194,8 @@ function removeAllPosts(){
 }
 
 function likeButton(e){
+  //called by event listener when the user clicks on a like button
+  //causes post to become liked, or unliked
   if( timelineArray[e.toElement.getAttribute("postid")].doILike == false){
     timelineArray[e.toElement.getAttribute("postid")].doILike = true;
     e.toElement.setAttribute("src", "images/like3.png");
@@ -208,6 +209,8 @@ function likeButton(e){
 }
 
 function updateStatusText(){
+  //called by the even listener when user clicks on the submit button in the update status form
+  //adds a new post by the user to the timeline data array and then displays the timeline
   var statusInput = document.getElementById("status-input");
   if(statusInput.value != ""){
     timelineArray.push({userId: 8, postId: timelineArray.length, date: 20160225, doILike: false, timeLinePicture: null, bodyText: statusInput.value});
@@ -217,6 +220,8 @@ function updateStatusText(){
 }
 
 function showLikedPost(){
+  //called by the event listener when the user clicks on link to show liked posts
+  //displays only posts the user has liked in the timeline
   var likedPostsArray = _.where(timelineArray, {doILike: true});
   removeAllPosts();
   for( var i = 0; i < likedPostsArray.length; i++)
@@ -226,6 +231,8 @@ function showLikedPost(){
 }
 
 function newsRequest(){
+  //makes initial call to new york times to pull in news articles and sets up
+  //the event listener to know when they have responded with the data
   news = new XMLHttpRequest();
   news.open("GET" , "http://api.nytimes.com/svc/search/v2/articlesearch.json?fl=headline%2Cweb_url%2Csnippet%2Clead_paragraph&api-key=ba97582bc69cd83e731a2b0260adee46%3A5%3A74617978", true);
   news.send();
@@ -233,6 +240,8 @@ function newsRequest(){
 }
 
 function processNewsRequest(e){
+  //processes the data received from new york times and chooses the data which
+  //is complete enough to display
   var numberPosted=0;
   var checkedArticles=0;
   if(news.readyState == 4 && news.status == 200){
@@ -248,6 +257,7 @@ function processNewsRequest(e){
 }
 
 function addNews(whichStory){
+  //physically adds the news data to the page
   var newsContainer = document.getElementById("news");
   var newslink = document.createElement("a");
   var newsListItem = document.createElement("li");
@@ -264,6 +274,8 @@ function addNews(whichStory){
 }
 
 function displayProfile(userId){
+  //called by the event listener when the user clicks on the picture or name of a friend
+  //displays that friend's profile, their pictures, and all of their timeline posts
   removeAllPosts();
   var container = document.getElementById("posts");
   var outterPanel = document.createElement("div");
@@ -315,6 +327,7 @@ function displayProfile(userId){
 }
 
 function usersPictures(user){
+  //adds a friend's pictures to their profile when viewing their profile
   var container = document.getElementById("posts");
   var outterPanel = document.createElement("div");
   outterPanel.setAttribute("class", "panel panel-default");
@@ -339,6 +352,7 @@ function usersPictures(user){
 }
 
 function addAPicture(url){
+  //adds each picture to the pictures panel in a user profile
   var pictureLocation = document.getElementById("pictures");
   var pictureElement = document.createElement("img");
   pictureElement.setAttribute("class", "img-responsive");
@@ -347,6 +361,7 @@ function addAPicture(url){
 }
 
 function displayUsersPosts(user){
+  //adds each of a user's posts to the bottom of their profile
   for( var i = 0; i < timelineArray.length; i++){
     if(timelineArray[i].userId == user ){
       addAPost(usersArray[user], timelineArray[i]);
@@ -355,17 +370,25 @@ function displayUsersPosts(user){
 }
 
 function changeAfriend(userNumber){
+  //called by the event listener
+  //if the inputted user is a friend, they are removed from friends, if they are
+  //not a friend, they are added
   if(usersArray[userNumber].isMyfriend == false){
     usersArray[userNumber].isMyfriend=true;
+    usersArray[userNumber].numberOfFriends++;
+    usersArray[8].numberOfFriends++;
   }
   else{
     usersArray[userNumber].isMyfriend=false;
+    usersArray[userNumber].numberOfFriends--;
+    usersArray[8].numberOfFriends--;
   }
   addAllFriends(usersArray);
   addAllTimeline(usersArray, timelineArray);
 }
 
 function addFriendPanel(){
+  //this adds the "add friends" panel to smaller form screens
   var timeLineLocation = document.getElementById("posts");
   var outterMostDiv = document.createElement("div");
   outterMostDiv.setAttribute("class" , "visible-xs-block visible-sm-block panel panel-default");
@@ -390,6 +413,7 @@ function addFriendPanel(){
 }
 
 function addFriendToPanel(userObj){
+  //adds friends to the "add friends" panel for smaller form screens
   var bodyDiv = document.getElementById("friend-panel");
   var friendSpan = document.createElement("div");
   friendSpan.setAttribute("class", "col-sm-4 col-xs-4");
@@ -411,11 +435,14 @@ function addFriendToPanel(userObj){
 }
 
 function displayEdit(){
+  //called by the event listener when the user clicks on Edit profile
+  //shows the hidden panel which allows the user to change their profile
   var element = document.getElementById("edit");
   element.setAttribute("class", "panel panel-default");
 }
 
 function changeProfile(string){
+  //makes changes to the user's information when the user edit's their profile
   var element = document.getElementById("edit");
   var firstNameElement = document.getElementById("editProfileName");
   var lastNameElement = document.getElementById("editProfileLastName");
@@ -438,6 +465,7 @@ function changeProfile(string){
 }
 
 function addName(){
+  //Adds the name of the user to the left-side panel.  Necessary for if the user changes their profile
   var nameLocation = document.getElementById("your-profile");
   var nameText = document.createTextNode( " " + usersArray[8].firstName + " " + usersArray[8].lastName);
   var iconSpan = document.createElement("span");
@@ -451,6 +479,7 @@ function addName(){
 }
 
 function postsProcess(e){
+  //processes the event listener and sends input to the correct function
   if(e.toElement.hasAttribute("postId")){
     likeButton(e);
   }
