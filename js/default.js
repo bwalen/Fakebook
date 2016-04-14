@@ -239,7 +239,7 @@ function newsRequest(){
   //makes initial call to new york times to pull in news articles and sets up
   //the event listener to know when they have responded with the data
   news = new XMLHttpRequest();
-  news.open("GET" , "http://api.nytimes.com/svc/search/v2/articlesearch.json?fl=headline%2Cweb_url%2Csnippet%2Clead_paragraph&api-key=ba97582bc69cd83e731a2b0260adee46%3A5%3A74617978", true);
+  news.open("GET" , "https://api.nytimes.com/svc/search/v2/articlesearch.json?fl=headline%2Cweb_url%2Csnippet%2Clead_paragraph&api-key=ba97582bc69cd83e731a2b0260adee46%3A5%3A74617978", true);
   news.send();
   news.addEventListener("readystatechange", processNewsRequest);
 }
